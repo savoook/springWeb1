@@ -26,8 +26,9 @@ public class CourseService {
     public void saveCourse(Course course) {
         repository.save(course);
     }
-    public List<Teacher> getTeacherByCourseName(String courseName){
-        List<Course> courses=repository.findAllByName(courseName);
+
+    public List<Teacher> getTeacherByCourseName(String courseName) {
+        List<Course> courses = repository.findAllByName(courseName);
         return courses.stream().map(c -> c.getTeacher()).collect(Collectors.toList());
     }
 
