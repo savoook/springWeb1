@@ -13,4 +13,5 @@ public interface CourseRepository extends PagingAndSortingRepository<Course, Int
     @Query("select c from Course c where c.name like %?1%")
     List<Course> findByAboutPartialMatch(String name);
 
+
 }

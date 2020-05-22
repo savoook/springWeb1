@@ -3,17 +3,18 @@
 <html>
 <head>
     <title>Courses</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>${courses}</h1>
+<a href="/setCookie">Set cookie</a>
 <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "/courses/add",
             contentType: "application/json",
-            data: JSON.stringify({name: "web course", duration: 40}),
+            data: JSON.stringify({name: "web+course", duration: 52}),
             dataType: 'json'
         })
     })
