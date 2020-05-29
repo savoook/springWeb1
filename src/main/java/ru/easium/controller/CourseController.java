@@ -1,6 +1,9 @@
 package ru.easium.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +40,10 @@ public class CourseController {
         return "courseAdd";
     }
 
+    @PostAuthorize("#username=authentication.principal.username")
+//    @PreAuthorize("#username=authentication.principal.username")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER_ADMIN')")
+//    @Secured({"ROLE_ADMIN", "ROLE_SUPER_ADMIN"})
     @PostMapping("/course/save")
     public String saveCourse(@RequestParam String name, @RequestParam int duration) {
         service.saveCourse(new Course(name, duration));

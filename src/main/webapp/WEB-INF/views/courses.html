@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Список курсов</title>
@@ -28,7 +29,10 @@
         </li>
     </ul>
 </nav>
-<a class="btn btn-primary" href="/course/add" role="button">Добавить курс</a>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <a class="btn btn-primary" href="/course/add" role="button">Добавить курс</a>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

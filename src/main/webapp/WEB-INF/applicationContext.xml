@@ -62,7 +62,13 @@
     </bean>
     <bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>
+        <property name="additionalDialects">
+            <set>
+                <bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect"/>
+            </set>
+        </property>
     </bean>
+    <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
     <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
         <property name="characterEncoding" value="UTF-8"/>
@@ -76,9 +82,9 @@
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 
-<!--    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">-->
-<!--        <jdbc:script location="classpath:sql/data-init.sql"/>-->
-<!--    </jdbc:initialize-database>-->
+    <!--    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">-->
+    <!--        <jdbc:script location="classpath:sql/data-init.sql"/>-->
+    <!--    </jdbc:initialize-database>-->
 
 
 </beans>
